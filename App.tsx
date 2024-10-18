@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Button
+        title="Show Form Sheet"
+        onPress={() => navigation.navigate('FormSheet')}
+      />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+function FormSheetScreen() {
+  return (
+    <View style={{flex: 1, backgroundColor: 'red'}}></View>
+  );
+}
+
+export default function App() {
+  return (      
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />        
+        <Stack.Screen
+          name="FormSheet"
+          component={FormSheetScreen}
+          options={{
+            presentation: 'formSheet',
+            // @ts-ignore
+            sheetAllowedDetents: [0, 1],
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}

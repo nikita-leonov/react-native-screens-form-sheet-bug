@@ -12,16 +12,19 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "newArchEnabled": true,
+      "supportsTablet": true,
+      "bundleIdentifier": "com.testFormSheet"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.testFormSheet"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
   }
 }
